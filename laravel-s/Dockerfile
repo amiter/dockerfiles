@@ -7,9 +7,9 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && apk add --no-cache --virtual .build-deps linux-headers autoconf gcc g++ php7-pear php7-dev musl-dev make libxml2-dev \
     && pecl install swoole \
     && docker-php-ext-enable swoole \
-    && docker-php-ext-install pdo_mysql mbstring bcmath pcntl \
+    && docker-php-ext-install pdo_mysql bcmath pcntl \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
-    && rm /tmp/* \
+    && rm -rf /tmp/* \
     && wget -O /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
     && chmod +x /usr/bin/composer
