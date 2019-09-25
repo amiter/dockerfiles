@@ -1,4 +1,4 @@
-FROM php:7.3-cli-alpine3.10
+FROM php:7.3-cli-alpine
 
 RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
@@ -9,4 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && docker-php-ext-enable swoole \
     && docker-php-ext-install pdo_mysql mbstring bcmath pcntl \
     && apk del .build-deps \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && rm /tmp/* \
+    && wget -O /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
+    && chmod +x /usr/bin/composer
