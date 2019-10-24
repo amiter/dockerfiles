@@ -29,6 +29,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && sed -i 's#pm.max_spare_servers = 3#pm.max_spare_servers = 6#' /usr/local/etc/php-fpm.d/www.conf \
     && echo "post_max_size=20M" >> /usr/local/etc/php/php.ini \
     && echo "upload_max_filesize=20M" >> /usr/local/etc/php/php.ini \
+    && echo "memory_limit=1024M" >> /usr/local/etc/php/php.ini \
     &&  apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     # 安装composer
