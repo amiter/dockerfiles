@@ -30,6 +30,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && echo "post_max_size=20M" >> /usr/local/etc/php/php.ini \
     && echo "upload_max_filesize=20M" >> /usr/local/etc/php/php.ini \
     && echo "memory_limit=1024M" >> /usr/local/etc/php/php.ini \
+    && echo "max_input_vars=10000" >> /usr/local/etc/php/php.ini \
     &&  apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     # 安装composer
