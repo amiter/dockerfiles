@@ -35,5 +35,5 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && rm -rf /var/cache/apk/* \
     # 安装composer
     && wget -O /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
-    && chmod +x /usr/bin/composer
-
+    && chmod +x /usr/bin/composer \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
