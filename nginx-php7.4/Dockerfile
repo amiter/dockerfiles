@@ -7,7 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && apk add --no-cache nginx freetype-dev libzip-dev libpng-dev libjpeg-turbo-dev \
     && mkdir -p /run/nginx \
     && apk add --no-cache --virtual .build-deps autoconf gcc g++ make dpkg dpkg-dev file libmagic re2c \
-    && docker-php-ext-configure gd \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-enable opcache \
     && docker-php-ext-install gd zip pdo_mysql bcmath sockets \
     && rm -rf /etc/nginx/conf.d/default.conf \
