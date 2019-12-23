@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine3.10
+FROM php:7.4-fpm-alpine
 
 RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
