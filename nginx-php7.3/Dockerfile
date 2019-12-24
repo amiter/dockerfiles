@@ -21,7 +21,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && rm -rf /usr/local/etc/php-fpm.d/zz-docker.conf \
     && rm -rf /usr/local/etc/php-fpm.d/www.conf.default \
     # 配置设定
-    && sed -i 's#listen = 127.0.0.1:9000#listen = /dev/shm/php7.3-fpm.sock#' /usr/local/etc/php-fpm.d/www.conf \
+    && sed -i 's#listen = 127.0.0.1:9000#listen = /dev/shm/php-fpm.sock#' /usr/local/etc/php-fpm.d/www.conf \
     && sed -i '/listen.owner = www-data/s/^;//' /usr/local/etc/php-fpm.d/www.conf \
     && sed -i '/listen.group = www-data/s/^;//' /usr/local/etc/php-fpm.d/www.conf \
     && sed -i '/listen.mode = 0660/s/^;//' /usr/local/etc/php-fpm.d/www.conf \
