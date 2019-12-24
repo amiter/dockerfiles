@@ -9,7 +9,6 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     # 开启nginx gzip
     && sed -i 's/client_max_body_size 1m;/client_max_body_size 20m;/' /etc/nginx/nginx.conf \
     && sed -i 's/#gzip on;/gzip on;/' /etc/nginx/nginx.conf \
-    #gzip on;
     && apk add --no-cache --virtual .build-deps autoconf gcc g++ make dpkg dpkg-dev file libmagic re2c \
     && docker-php-ext-configure gd \
         --with-gd \
