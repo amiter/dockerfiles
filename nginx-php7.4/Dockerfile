@@ -6,6 +6,9 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     # 安装nginx、依赖库等
     && apk add --no-cache nginx freetype-dev libzip-dev libpng-dev libjpeg-turbo-dev \
     && mkdir -p /run/nginx \
+    # 开启nginx gzip
+    && sed -i 's/client_max_body_size 1m;/client_max_body_size 20m;/' /etc/nginx/nginx.conf \
+    && sed -i 's/#gzip on;/gzip on;/' /etc/nginx/nginx.conf \
     && apk add --no-cache --virtual .build-deps autoconf gcc g++ make dpkg dpkg-dev file libmagic re2c \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-enable opcache \
@@ -14,7 +17,6 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
     && rm -rf /usr/local/etc/php-fpm.d/zz-docker.conf \
     && rm -rf /usr/local/etc/php-fpm.d/www.conf.default \
     # 配置设定
-    && sed -i 's/client_max_body_size 1m;/client_max_body_size 20m;/' /etc/nginx/nginx.conf \
     && sed -i 's#listen = 127.0.0.1:9000#listen = /dev/shm/php7.4-fpm.sock#' /usr/local/etc/php-fpm.d/www.conf \
     && sed -i '/listen.owner = www-data/s/^;//' /usr/local/etc/php-fpm.d/www.conf \
     && sed -i '/listen.group = www-data/s/^;//' /usr/local/etc/php-fpm.d/www.conf \
